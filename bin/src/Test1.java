@@ -24,18 +24,21 @@ public class Test1 {
 		WebElement gauge = gaugeWait.until(
 				ExpectedConditions.visibilityOfElementLocated(By.className("gauge-speed-needle")));
 
-		// Waiting until "GO" button is displayed timeout is 60 sec, "Go" button is displayed again when Speedtest is done along with results
+		// Waiting until "GO" button is displayed timeout is 60 sec, "Go" button is displayed again when Speedtest completes
 		WebDriverWait goWait = new WebDriverWait(driver, 60);
 		WebElement goButton = goWait.until(
 				ExpectedConditions.visibilityOfElementLocated(By.className("start-text")));
 		// Getting Server name
 		String currentServer = driver.findElement(By.className("server-current")).findElement(By.className("name")).getText();
 		// Getting Ping result (only the number)
-		String pingResult = driver.findElement(By.className("result-container-speed")).findElement(By.xpath("//span[@class='result-data-large number result-data-value ping-speed']")).getText();
+		String pingResult = driver.findElement(By.className("result-container-speed"))
+				.findElement(By.xpath("//span[@class='result-data-large number result-data-value ping-speed']")).getText();
 		// Getting Download speed result
-		String downloadResult = driver.findElement(By.className("result-container-speed")).findElement(By.xpath("//span[@class='result-data-large number result-data-value download-speed']")).getText();
+		String downloadResult = driver.findElement(By.className("result-container-speed"))
+				.findElement(By.xpath("//span[@class='result-data-large number result-data-value download-speed']")).getText();
 		// Getting Upload speed result
-		String uploadResult = driver.findElement(By.className("result-container-speed")).findElement(By.xpath("//span[@class='result-data-large number result-data-value upload-speed']")).getText();
+		String uploadResult = driver.findElement(By.className("result-container-speed"))
+				.findElement(By.xpath("//span[@class='result-data-large number result-data-value upload-speed']")).getText();
 		// Getting speed units
 		String speedUnits = driver.findElement(By.className("result-container-speed"))
 				.findElement(By.xpath("//div[@class='result-item result-item-download updated test-mode-multi']"))
