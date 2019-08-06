@@ -7,7 +7,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import javax.crypto.spec.PSource;
 
-public class Test1 {
+public class speedTest_test {
  public static void main(String[] args) throws InterruptedException {
 	System.setProperty("webdriver.chrome.driver", "drivers/chromedriver");
 	WebDriver driver=(WebDriver) new ChromeDriver();
