@@ -1,12 +1,12 @@
 package driverSetup;
 
 
-import org.apache.maven.shared.utils.io.FileUtils;
+import io.qameta.allure.Allure;
+import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.ITestResult;
 import org.testng.annotations.*;
 
@@ -18,18 +18,10 @@ public abstract class BaseTest {
 
     public WebDriver driver;
 
-    @BeforeSuite
-    public void globalSetup(){
-
-    }
-
     @BeforeMethod
     public void driverSetup(){
         System.setProperty("webdriver.chrome.driver", "drivers/chromedriver");
         driver =  new ChromeDriver();
-
-        System.out.println(driver.getTitle());
-        System.out.println(driver.getCurrentUrl());
     }
 
     @AfterMethod
@@ -42,6 +34,7 @@ public abstract class BaseTest {
                                                         + name + " "
                                                         + new Date()
                                                         + ".png"));
+            Allure.addAttachment(name, FileUtils.openInputStream(getScreenshot));
             System.out.println(driver.getPageSource());
         }
 
@@ -50,11 +43,4 @@ public abstract class BaseTest {
             driver = null;
         }
     }
-
-
-    @AfterSuite
-    public void globalTearDown(){
-
-    }
-
 }

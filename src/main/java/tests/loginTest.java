@@ -1,6 +1,8 @@
 package tests;
 
 import driverSetup.BaseTest;
+import io.qameta.allure.Allure;
+import io.qameta.allure.Description;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.LoginPage;
@@ -8,7 +10,8 @@ import pages.TestHelpers;
 
 public class loginTest extends BaseTest {
 
-    @Test(description = "Validate the login")
+    @Test
+    @Description("Validate the login")
     public void checkEmail() {
 
         driver.get("https://speedtest.net/login");
@@ -24,16 +27,18 @@ public class loginTest extends BaseTest {
         LoginPage loginPage = new LoginPage(driver);
 
         for (String invalidEmailDatum : invalidEmailData) {
+            Allure.step("Testing with " + invalidEmailDatum + " email.");
             loginPage.emailField.clear();
             loginPage.emailField.sendKeys(invalidEmailDatum);
             loginPage.pwdField.click();
             new TestHelpers().WaitForElement(driver, loginPage.invalidEmailMessage, 5);
             String invalidMessageText = loginPage.invalidEmailMessage.getText();
-            Assert.assertEquals(invalidMessageText, "This  value should be a valid email.");
+            Assert.assertEquals(invalidMessageText, "This value should be a valid email.");
         }
     }
 
-    @Test(description = "Testing empty password field")
+    @Test
+    @Description("Testing empty password field")
     public void checkPassword() {
 
         driver.get("https://speedtest.net/login");
@@ -45,7 +50,8 @@ public class loginTest extends BaseTest {
         Assert.assertEquals(loginPage.invalidPwdMessage.getText(), "This value is required.");
     }
 
-    @Test(description = "Testing empty password field")
+    @Test
+    @Description("Testing empty password field")
     public void checkCapcha() {
 
         driver.get("https://speedtest.net/login");
