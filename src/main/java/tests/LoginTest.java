@@ -6,9 +6,9 @@ import io.qameta.allure.Description;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.LoginPage;
-import pages.TestHelpers;
+import helpers.TestHelpers;
 
-public class loginTest extends BaseTest {
+public class LoginTest extends BaseTest {
 
     @Test
     @Description("Validate the login")
@@ -31,7 +31,7 @@ public class loginTest extends BaseTest {
             loginPage.emailField.clear();
             loginPage.emailField.sendKeys(invalidEmailDatum);
             loginPage.pwdField.click();
-            new TestHelpers().WaitForElement(driver, loginPage.invalidEmailMessage, 5);
+            new TestHelpers().waitForElement(loginPage.invalidEmailMessage, 5);
             String invalidMessageText = loginPage.invalidEmailMessage.getText();
             Assert.assertEquals(invalidMessageText, "This value should be a valid email.");
         }

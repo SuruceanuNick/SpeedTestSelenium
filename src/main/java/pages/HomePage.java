@@ -5,7 +5,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class HomePage{
+public class HomePage {
     private WebDriver driver;
 
     public HomePage (WebDriver driver) {
@@ -36,9 +36,4 @@ public class HomePage{
 
     @FindBy(xpath = "//span[@class='result-data-large number result-data-value upload-speed']")
     public WebElement uploadSpeedResult;
-
-
-
-
-
 }

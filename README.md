@@ -5,6 +5,7 @@ An example of Selenium Web Automation.
 - Language: *Java*
 - Build tool: *Maven*
 - Framework: *TestNG*
+- Driver: *ChromeDriver 88*
 - IDE: *IntelliJ IDEA* 
 - OS: *Fedora 33*
 
@@ -12,7 +13,7 @@ An example of Selenium Web Automation.
 
 `cd {repo folder}`
 
-`mvn clean install`
+`mvn clean test`
 
 ## How to generate report
 
@@ -24,7 +25,7 @@ Generate report
 
 `cd {repo folder}`
 
-`allure serve -h localhost allure-report`
+`allure serve -h localhost allure-results`
 
 
 ## Report screenshots

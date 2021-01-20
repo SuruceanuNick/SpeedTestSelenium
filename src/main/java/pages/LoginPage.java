@@ -30,6 +30,4 @@ public class LoginPage {
 
     @FindBy(className = "alertbox")
     public WebElement alertMessage;
-
-
 }

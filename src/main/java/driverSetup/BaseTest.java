@@ -19,7 +19,7 @@ public abstract class BaseTest {
     public WebDriver driver;
 
     @BeforeMethod
-    public void driverSetup(){
+    public void driverSetup() {
         System.setProperty("webdriver.chrome.driver", "drivers/chromedriver");
         driver =  new ChromeDriver();
     }
