@@ -31,7 +31,7 @@ public class LoginTest extends BaseTest {
             loginPage.emailField.clear();
             loginPage.emailField.sendKeys(invalidEmailDatum);
             loginPage.pwdField.click();
-            new TestHelpers().waitForElement(loginPage.invalidEmailMessage, 5);
+            TestHelpers.waitForElement(loginPage.invalidEmailMessage, 5);
             String invalidMessageText = loginPage.invalidEmailMessage.getText();
             Assert.assertEquals(invalidMessageText, "This value should be a valid email.");
         }
@@ -54,9 +54,8 @@ public class LoginTest extends BaseTest {
     @Description("Testing empty password field")
     public void checkCapcha() {
 
-        driver.get("https://speedtest.net/login");
-
         LoginPage loginPage = new LoginPage(driver);
+        driver.get("https://speedtest.net/login");
         loginPage.emailField.clear();
         loginPage.emailField.sendKeys("some@email.com");
         loginPage.pwdField.sendKeys("somePassword");

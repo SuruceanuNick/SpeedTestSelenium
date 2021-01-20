@@ -7,8 +7,6 @@ import org.testng.annotations.Test;
 import pages.HomePage;
 import helpers.TestHelpers;
 
-
-
 public class SpeedTest extends BaseTest {
 	@Test
 	@Description("Trigger the SpeedTest")
@@ -17,15 +15,14 @@ public class SpeedTest extends BaseTest {
 		driver.get("https://speedtest.net");
 
 		HomePage homePage = new HomePage(driver);
-		TestHelpers testHelpers = new TestHelpers();
 		Assert.assertEquals(driver.getTitle(), "Speedtest by Ookla - The Global Broadband Speed Test");
 		homePage.goButton.click();
 
 
-		testHelpers.waitForElement(homePage.pingSpeedResult,60);
-		testHelpers.waitForElement(homePage.downloadSpeedResult,5);
-		testHelpers.waitForElement(homePage.uploadSpeedResult,5);
-		testHelpers.waitForElement(homePage.resultLabel, 60);
+		TestHelpers.waitForElement(homePage.pingSpeedResult,60);
+		TestHelpers.waitForElement(homePage.downloadSpeedResult,5);
+		TestHelpers.waitForElement(homePage.uploadSpeedResult,5);
+		TestHelpers.waitForElement(homePage.resultLabel, 60);
 
 		int pingResult = Integer.parseInt(homePage.pingSpeedResult.getText());
 		int thresholdPingResult = 100;

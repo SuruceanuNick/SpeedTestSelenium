@@ -16,28 +16,31 @@ import java.util.Date;
 
 public abstract class BaseTest {
 
-    public WebDriver driver;
+    public static WebDriver driver;
 
-    @BeforeMethod
+    @BeforeTest
     public void driverSetup() {
         System.setProperty("webdriver.chrome.driver", "drivers/chromedriver");
         driver =  new ChromeDriver();
     }
 
     @AfterMethod
-    public void driverTearDown(ITestResult result) throws IOException {
+    public void testResult(ITestResult result) throws IOException {
         if (ITestResult.FAILURE == result.getStatus()) {
             String name = "fail_" + result.getName();
             File path = new File(System.getProperty("user.dir"));
             File getScreenshot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
             FileUtils.copyFile(getScreenshot, new File(path.getAbsolutePath() + "/screenshots/"
-                                                        + name + " "
-                                                        + new Date()
-                                                        + ".png"));
+                    + name + " "
+                    + new Date()
+                    + ".png"));
             Allure.addAttachment(name, FileUtils.openInputStream(getScreenshot));
             System.out.println(driver.getPageSource());
         }
+    }
 
+    @AfterTest
+    public void driverTearDown() {
         if (driver != null) {
             driver.close();
             driver = null;
