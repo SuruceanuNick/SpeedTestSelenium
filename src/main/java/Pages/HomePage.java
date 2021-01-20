@@ -1,4 +1,4 @@
-package pages;
+package Pages;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -37,4 +37,9 @@ public class HomePage {
 
     @FindBy(xpath = "//span[@class='result-data-large number result-data-value upload-speed']")
     public WebElement uploadSpeedResult;
+
+    @FindBy(xpath = "//div[@class='result-item result-item-download updated test-mode-multi']/div/span[@class='result-data-unit']")
+    public WebElement downloadResultDataUnit;
+    @FindBy(xpath = "//div[@class='result-item result-item-upload updated test-mode-multi']/div/span[@class='result-data-unit']")
+    public WebElement uploadResultDataUnit;
 }

@@ -1,11 +1,12 @@
-package tests;
+package Tests;
 
-import driverSetup.BaseTest;
+import Fixtures.BaseTest;
+import io.qameta.allure.Allure;
 import io.qameta.allure.Description;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import pages.HomePage;
-import helpers.TestHelpers;
+import Pages.HomePage;
+import Helpers.TestHelpers;
 
 public class SpeedTest extends BaseTest {
 	@Test
@@ -29,12 +30,18 @@ public class SpeedTest extends BaseTest {
 		Assert.assertTrue(pingResult < thresholdPingResult);
 
 		double downloadResult = Double.parseDouble(homePage.downloadSpeedResult.getText());
-		double thresholdDownloadResult = 500;
-		Assert.assertFalse(downloadResult < thresholdDownloadResult,
-				"Your download speeds are abysmal! Do something! ....Just Kidding! :D \n");
+		double uploadResult = Double.parseDouble(homePage.uploadSpeedResult.getText());
+		Allure.addAttachment ("Download Result: ",
+				downloadResult + " " + homePage.downloadResultDataUnit.getText());
+		Allure.addAttachment ("Upload Result: ",
+				uploadResult + " " + homePage.uploadResultDataUnit.getText());
 
-		double uploadResult = Double.parseDouble(homePage.downloadSpeedResult.getText());
+		// Test Assertions (test will fail on purpose)
+		double thresholdDownloadResult = 500;
 		double thresholdUploadResult = 500;
-		Assert.assertFalse(uploadResult < thresholdUploadResult, "Your upload speeds are abysmal! Do something!\n");
+		Assert.assertFalse(downloadResult < thresholdDownloadResult,
+				"Your download speeds are abysmal! Do something!\n ....Just Kidding! :D \n Test failed on purpose.");
+		Assert.assertFalse(uploadResult < thresholdUploadResult,
+				"Your upload speeds are abysmal! Do something!\n ....Just Kidding! :D \n Test failed on purpose.");
 	}
 }

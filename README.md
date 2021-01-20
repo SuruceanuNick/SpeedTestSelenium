@@ -34,4 +34,4 @@ Generate report
 
 ![TestPassed](screenshots/reportExamplePass.png)
 
-###### *NOTE: Don't bother about the IP from the screenshot. Test was run via VPN.* 😁 
+###### *NOTE: Don't bother about the IP from the screenshot in screenshots folder. Test was run via VPN.* 😁 

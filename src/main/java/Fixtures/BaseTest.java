@@ -1,5 +1,4 @@
-package driverSetup;
-
+package Fixtures;
 
 import io.qameta.allure.Allure;
 import org.apache.commons.io.FileUtils;

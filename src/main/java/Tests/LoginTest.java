@@ -1,12 +1,12 @@
-package tests;
+package Tests;
 
-import driverSetup.BaseTest;
+import Fixtures.BaseTest;
 import io.qameta.allure.Allure;
 import io.qameta.allure.Description;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import pages.LoginPage;
-import helpers.TestHelpers;
+import Pages.LoginPage;
+import Helpers.TestHelpers;
 
 public class LoginTest extends BaseTest {
 
