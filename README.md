@@ -5,9 +5,9 @@ An example of Selenium Web Automation.
 - Language: *Java*
 - Build tool: *Maven*
 - Framework: *TestNG*
-- Driver: *ChromeDriver 88*
+- Driver: *ChromeDriver 112*
 - IDE: *IntelliJ IDEA* 
-- OS: *Fedora 33*
+- OS: *Fedora 37*
 
 ## How to run
 
